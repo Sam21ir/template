@@ -1,0 +1,77 @@
+on:
+  push:
+    branches:
+      - main
+      - dev
+      - test
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-north-1
+
+      - name: Create S3 Bucket with Website Configuration
+        run: |
+          aws s3api create-bucket \
+            --bucket github-actions-portfolio \
+            --region eu-north-1 \
+            --create-bucket-configuration LocationConstraint=eu-north-1
+
+          aws s3api put-public-access-block \
+            --bucket github-actions-portfolio \
+            --public-access-block-configuration '{
+              "BlockPublicAcls": false,
+              "IgnorePublicAcls": false,
+              "BlockPublicPolicy": false,
+              "RestrictPublicBuckets": false
+            }'
+
+          aws s3api put-bucket-website \
+            --bucket github-actions-portfolio \
+            --website-configuration '{
+                "IndexDocument": {
+                    "Suffix": "index.html"
+                },
+                "ErrorDocument": {
+                    "Key": "error.html"
+                }
+            }'
+
+          # Add a bucket policy to allow public read access
+          aws s3api put-bucket-policy \
+            --bucket github-actions-portfolio \
+            --policy '{
+                "Version": "2012-10-17",
+                "Statement": [
+                    {
+                        "Effect": "Allow",
+                        "Principal": "*",
+                        "Action": "s3:GetObject",
+                        "Resource": "arn:aws:s3:::github-actions-portfolio/*"
+                    }
+                ]
+            }'
+            
+      - name: Display Website URL
+        run: |
+          echo "Your website is hosted at http://github-actions-portfolio.s3-website-eu-north-1.amazonaws.com"
+
+      - name: Deploy static site to S3 bucket
+        run: |
+          aws s3 sync ./public/ s3://github-actions-portfolio --delete
+          echo "Deployment completed."
+
+      - name: Display Website URL
+        run: |
+          echo "Tu sitio web está alojado en http://github-actions-portfolio.s3-website-eu-north-1.amazonaws.com"
+          
