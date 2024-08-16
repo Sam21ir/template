@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAMIR EL ALAMI | Portafolio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>SAMIR</h1>
+            <nav>
+                <ul>
+                    <li><a href="#home">Inicio</a></li>
+                    <li><a href="#about">Sobre Mí</a></li>
+                    <li><a href="#portfolio">Portafolio</a></li>
+                    <li><a href="#resume">Currículum</a></li>
+                    <li><a href="#contact">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section id="home">
+        <div class="container">
+            <h2>Bienvenido a Mi Portafolio</h2>
+            <p>¡Hola! Soy SAMIR, un apasionado desarrollador front-end especializado en crear sitios web bellos y funcionales.</p>
+            <a href="#portfolio" class="btn">Ver Mi Trabajo</a>
+        </div>
+    </section>
+    <section id="about">
+        <div class="container">
+            <h2>Sobre Mí</h2>
+            <div class="about-content">
+                <img src="your-photo.jpg" alt="SAMIR">
+                <p>Soy un desarrollador front-end con experiencia en HTML, CSS, JavaScript y frameworks modernos como React. Disfruto convertir problemas complejos en soluciones simples y elegantes.</p>
+                <p>Cuando no estoy programando, me encontrarás [tus pasatiempos o intereses].</p>
+            </div>
+        </div>
+    </section>
+    <section id="portfolio">
+        <div class="container">
+            <h2>Portafolio</h2>
+            <div class="projects">
+                <!-- Proyecto 1 -->
+                <div class="project">
+                    <img src="project1.jpg" alt="VCSA">
+                    <div class="project-info">
+                        <h3>Implementación de una infraestructura virtual con VMware vSphere</h3>
+                        <p>El proyecto consistió en la implementación de una infraestructura virtual utilizando VMware vSphere, con tecnologías como VMware ESXi y vCenter Server. El objetivo fue optimizar el uso de los recursos, garantizar la alta disponibilidad de las aplicaciones críticas y facilitar la gestión centralizada de la infraestructura. Entre las características clave se encuentran la creación de máquinas virtuales, la implementación de alta disponibilidad (HA), la migración en tiempo real de máquinas (vMotion) y la optimización del rendimiento mediante el uso compartido de recursos.</p>
+                        <a href="https://docs.vmware.com/es/VMware-vSphere/6.7/com.vmware.vsphere.vcsa.doc/GUID-223C2821-BD98-4C7A-936B-7DBE96291BA4.html" target="_blank" class="btn">Ver màs</a>
+                    </div>
+                </div>
+                <!-- Proyecto 2 -->
+                <div class="project">
+                    <img src="project2.jpg" alt="Proyecto 2">
+                    <div class="project-info">
+                        <h3>Del Código a la Nube: Automatización de Despliegues con GitHub Actions</h3>
+                        <p>Descripción breve del proyecto, tecnologías utilizadas y características clave.</p>
+                        <a href="https://github.com/Sam21ir" target="_blank" class="btn">Ver Proyecto</a>
+                    </div>
+                </div>
+                <!-- Agregar más proyectos según sea necesario -->
+            </div>
+        </div>
+    </section>
+    <section id="resume">
+        <div class="container">
+            <h2>Currículum</h2>
+            <a href="resume.pdf" download class="btn">Descargar Mi Currículum</a>
+            <div class="resume-content">
+                <h3>Experiencia</h3>
+                <p>Detalles sobre tu experiencia profesional.</p>
+                <h3>Educación</h3>
+                <p>Detalles sobre tu formación académica.</p>
+            </div>
+        </div>
+    </section>
+    <section id="contact">
+        <div class="container">
+            <h2>Contacto</h2>
+            <form id="contact-form">
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Correo Electrónico:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Mensaje:</label>
+                <textarea id="message" name="message" required></textarea>
+                <button type="submit" class="btn">Enviar Mensaje</button>
+            </form>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Tu Nombre. Todos los derechos reservados.</p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/elalamisamir/" target="_blank">LinkedIn</a>
+                <a href="https://github.com/Sam21ir" target="_blank">GitHub</a>
+                <a href="https://Facebook.com" target="_blank">Facebook</a>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
